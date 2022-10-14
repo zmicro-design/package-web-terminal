@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# set -e
+
+. $ZMICRO_HOME/core/env
+
+help() {
+  echo "Usage:"
+  echo "  zmicro web-terminal [options]"
+}
+
+core() {
+  # if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  #   help
+  #   exit 0
+  # fi
+
+  which web-terminal >>/dev/null 2>&1
+  if [ "$?" != "0" ]; then
+    zmicro package install web-terminal
+  fi
+
+  web-terminal $@
+}
+
+run() {
+  core $@
+}
+
+run $@
