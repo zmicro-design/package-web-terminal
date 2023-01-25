@@ -20,6 +20,12 @@ core() {
     zmicro package install web-terminal
   fi
 
+  # zmicro package install nodejs
+  
+  export NODE_HOME=/usr/local/node
+  export NODE_USER_HOME=${HOME:-"/root"}/.node
+  export PATH=$NODE_USER_HOME/bin:$NODE_HOME/bin:$PATH
+
   web-terminal $@
 }
 
